@@ -87,7 +87,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/huawei/c8813/ramdisk/e2fsck_s:root/sbin/e2fsck_s \
     device/huawei/c8813/ramdisk/resize2fs_s:root/sbin/resize2fs_s \
-    device/huawei/c8813/ramdisk/resize2fs_wrapper:root/sbin/resize2fs_wrapper
+    device/huawei/c8813/ramdisk/resize2fs_wrapper:root/sbin/resize2fs_wrapper \
+    device/huawei/c8813/ramdisk/tp/1294018.img:root/tp/1294018.img
 
 PRODUCT_COPY_FILES += \
     device/huawei/c8813/prebuilt/system/wifi/ath6k/athtcmd_ram.bin:system/wifi/ath6k/athtcmd_ram.bin \
