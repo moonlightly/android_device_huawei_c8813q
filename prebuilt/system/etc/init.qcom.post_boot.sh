@@ -185,7 +185,7 @@ case "$target" in
     "msm8960" | "msm8660" | "msm7630_surf")
         echo 10 > /sys/devices/platform/msm_sdcc.3/idle_timeout
         ;;
-    "msm7627a")
+    "msm7627a" | "msm7x27a")
         echo 10 > /sys/devices/platform/msm_sdcc.1/idle_timeout
         ;;
 esac
@@ -227,7 +227,7 @@ esac
 
 # Change adj level and min_free_kbytes setting for lowmemory killer to kick in
 case "$target" in
-     "msm7627a")
+     "msm7627a" | "msm7x27a")
 	echo 0,1,2,4,9,12 > /sys/module/lowmemorykiller/parameters/adj
 	echo 5120 > /proc/sys/vm/min_free_kbytes
      ;;

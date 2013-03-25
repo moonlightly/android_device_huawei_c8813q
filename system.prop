@@ -4,47 +4,27 @@
 ro.vendor.extension_library=/system/lib/libqc-opt.so
 rild.libpath=/system/lib/libril-qc-1.so
 rild.libargs=-d /dev/smd0
-persist.rild.nitz_plmn=
-persist.rild.nitz_long_ons_0=
-persist.rild.nitz_long_ons_1=
-persist.rild.nitz_long_ons_2=
-persist.rild.nitz_long_ons_3=
-persist.rild.nitz_short_ons_0=
-persist.rild.nitz_short_ons_1=
-persist.rild.nitz_short_ons_2=
-persist.rild.nitz_short_ons_3=
 ro.cdma.home.operator.numeric=46003
 ro.telephony.default_network=4
 ro.config.cdma_subscription=0
 ro.cdma.factory=china
-ro.telephony.ril_class=HwQcomRIL
 ril.subscription.types=NV,RUIM
+ro.config.cdma.globalModeSingle=true
 DEVICE_PROVISIONED=1
 debug.sf.hw=1
 ro.sf.lcd_density=240
 ro.opengles.version=131072
-ro.use_data_netmgrd=true
-ro.config.hw_omacp=1
-
-media.stagefright.enable-player=true
-media.stagefright.enable-meta=false
-media.stagefright.enable-scan=true
-media.stagefright.enable-http=true
-media.stagefright.enable-fma2dp=true
-media.stagefright.enable-aac=true
-media.stagefright.enable-qcp=true
 
 wifi.interface=eth0
 wifi.supplicant_scan_interval=15
 
-#debug.camcorder.disablemeta=1
-
-persist.sys.usb.config=mass_storage,adb
+debug.camcorder.disablemeta=1
 
 # Mount the internal SD card, too
 ro.additionalmounts=/storage/sdcard1
 ro.vold.switchablepair=/storage/sdcard1,/storage/sdcard0
 ro.emmc.sdcard.partition=19
+persist.sys.usb.config=mass_storage,adb
 
 persist.sys.use_dithering=2
 com.qc.hardware=true
@@ -134,6 +114,7 @@ net.webkit.cache.maxdeadsize = 4194304
 persist.data_netmgrd_mtu=1460
 
 # modempre
+ro.config.is_cdma_phone=true
 ro.config.sel_df_c_before_tp=true
 ro.config.notRefreshInPBM=true
 
@@ -145,7 +126,7 @@ hw.cabl.version=1.0.20120512
 ro.qualcomm.cabl=1
 
 # init.qcom.composition_type.sh
-lpa.decode=true
+lpa.decode=false
 
 # libc
 net.dns.cache_size=512
@@ -162,16 +143,12 @@ ro.config.is_agps_disable=0
 # libril-qc-1.so
 ro.config.hw_cdma_cdg=false
 
-# modempre
-ro.config.is_cdma_phone=true
-
 # VM
 dalvik.vm.dexopt-data-only=1
 dalvik.vm.execution-mode=int:jit
 dalvik.vm.heapgrowthlimit=36m
 dalvik.vm.heapsize=128m
 dalvik.vm.heapstartsize=5m
-
 
 ro.confg.hw_appsbootversion=C8813VSHENDUOS_APPSBOOT
 ro.confg.hw_appversion=C8813VSHENDUOS_KERNEL

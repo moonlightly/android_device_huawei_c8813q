@@ -20,9 +20,8 @@
 <device name="Android">
   <item name="none">0</item>
   <item name="screen.on">22</item>
-  <item name="bluetooth.active">120</item> <!-- In call -->
-  <item name="bluetooth.on">0.3</item>
-  <!-- CPU wakelock held for 830ms on bluetooth headset at command. 43mA * 830 -->
+  <item name="bluetooth.active">103</item>
+  <item name="bluetooth.on">0.8</item>
   <item name="bluetooth.at">35690</item>
   <item name="screen.full">127</item>
   <item name="wifi.on">4</item>
@@ -31,43 +30,41 @@
   <item name="dsp.audio">38</item>
   <item name="dsp.video">55</item>
   <item name="radio.active">220</item>
-  <item name="gps.on">48</item>
-  <item name="battery.capacity">1390</item>
-  <item name="radio.scanning">70</item>
-  <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
+  <item name="gps.on">70</item>
+  <array name="radio.on">
       <value>3</value>
       <value>3</value>
   </array>
   <array name="cpu.speeds">
-    <value>245000</value>
-    <value>384000</value>
-    <value>460800</value>
-    <value>499200</value>
-    <value>576000</value>
-    <value>614400</value>
-    <value>652800</value>
-    <value>691200</value>
-    <value>768000</value>
-    <value>806400</value>
-    <value>844800</value>
-    <value>998400</value>
+      <value>122880</value>
+      <value>245760</value>
+      <value>320000</value>
+      <value>480000</value>
+      <value>600000</value>
+      <value>800000</value>
+      <value>1008000</value>
+      <value>1056000</value>
+      <value>1113600</value>
+      <value>1152000</value>
+      <value>1190400</value>
+      <value>1228800</value>
+      <value>1267200</value>
   </array>
-  <!-- Power consumption in suspend -->
   <item name="cpu.idle">1.0</item>
-  <item name="cpu.awake">20</item>
-  <!-- Power consumption at different speeds -->
   <array name="cpu.active">
-      <value>66.6</value>
-      <value>84</value>
-      <value>90.8</value>
-      <value>96</value>
+      <value>51</value>
+      <value>58</value>
+      <value>63</value>
+      <value>70</value>
+      <value>80</value>
       <value>105</value>
-      <value>111.5</value>
-      <value>117.3</value>
-      <value>123.6</value>
-      <value>134.5</value>
-      <value>141.8</value>
-      <value>148.5</value>
-      <value>168.4</value>
+      <value>120</value>
+      <value>125</value>
+      <value>129</value>
+      <value>132</value>
+      <value>135</value>
+      <value>138</value>
+      <value>142</value>
   </array>
+  <item name="battery.capacity">1500</item>
 </device>

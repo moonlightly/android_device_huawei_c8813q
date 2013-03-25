@@ -113,6 +113,7 @@ on boot
     chown system system /sys/power/autosleep
     chown radio system /sys/class/leds/ptt_led/brightness
     chmod 0660 /dev/msm_cad
+    chmod 0755 /proc/cmdline
 
     chown system system /sys/kernel/logger/log_main/enable
     chown system system /sys/kernel/logger/log_events/enable
@@ -423,23 +424,6 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -ieth0 -puse_p2p_gro
     disabled
     oneshot
 
-service amp_init /system/bin/amploader -i
-    class late_start
-    user root
-    disabled
-    oneshot
-
-service amp_load /system/bin/amploader -l 7000
-    class late_start
-    user root
-    disabled
-    oneshot
-
-service amp_unload /system/bin/amploader -u
-    class late_start
-    user root
-    disabled
-    oneshot
 service dhcpcd_eth0 /system/bin/dhcpcd -BKLG
     class main
     disabled
@@ -651,4 +635,10 @@ on property:sys.radio.shutdown=true
 service gpu_dcvsd /system/bin/gpu_dcvsd
     class late_start
     user root
+    oneshot
+    
+service wlan_detect /system/bin/wlan_detect
+    class main
+    user root
+    group root
     oneshot
