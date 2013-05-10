@@ -3,7 +3,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_as_supl.mk)
 $(call inherit-product-if-exists, vendor/huawei/c8813/c8813-vendor.mk)
-#$(call inherit-product-if-exists, vendor/huawei/qcom-common/common-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/huawei/c8813/overlay
 
@@ -78,8 +77,7 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8813/ramdisk/init.huawei.usb.rc:root/init.huawei.usb.rc \
     device/huawei/c8813/ramdisk/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
     device/huawei/c8813/ramdisk/init.qcom.class_main.sh:root/init.qcom.class_main.sh \
-    device/huawei/c8813/ramdisk/init.qcom.ril.path.sh:root/init.qcom.ril.path.sh \
-    device/huawei/c8813/ramdisk/adbd:root/sbin/adbd
+    device/huawei/c8813/ramdisk/init.qcom.ril.path.sh:root/init.qcom.ril.path.sh
 
 PRODUCT_COPY_FILES += \
     device/huawei/c8813/ramdisk/e2fsck_s:root/sbin/e2fsck_s \
@@ -142,22 +140,6 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8813/prebuilt/system/usr/keylayout/ft5x06_ts.kl:system/usr/keylayout/ft5x06_ts.kl \
     device/huawei/c8813/prebuilt/system/usr/keylayout/surf_keypad.kl:system/usr/keylayout/surf_keypad.kl
 
-# if we use .34 kernel change 
-PRODUCT_COPY_FILES += \
-    device/huawei/c8813/prebuilt/system/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
-    device/huawei/c8813/prebuilt/system/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
-    device/huawei/c8813/prebuilt/system/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
-    device/huawei/c8813/prebuilt/system/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
-    device/huawei/c8813/prebuilt/system/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
-    device/huawei/c8813/prebuilt/system/lib/libOpenVG.so:system/lib/libOpenVG.so \
-    device/huawei/c8813/prebuilt/system/lib/libgsl.so:system/lib/libgsl.so \
-    device/huawei/c8813/prebuilt/system/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so
-PRODUCT_COPY_FILES += \
-    device/huawei/c8813/prebuilt/system/lib/hw/gralloc.msm7x27a.so:system/lib/hw/gralloc.msm7x27a.so \
-    device/huawei/c8813/prebuilt/system/lib/hw/hwcomposer.msm7x27a.so:system/lib/hw/hwcomposer.msm7x27a.so \
-    device/huawei/c8813/prebuilt/system/lib/libgenlock.so:system/lib/libgenlock.so \
-    device/huawei/c8813/prebuilt/system/lib/libmemalloc.so:system/lib/libmemalloc.so \
-    device/huawei/c8813/prebuilt/system/lib/liboverlay.so:system/lib/liboverlay.so \
 $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_NAME := cm_c8813
