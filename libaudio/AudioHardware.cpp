@@ -125,6 +125,7 @@ static int snd_device = -1;
 static uint32_t SND_DEVICE_CURRENT=-1;
 static uint32_t SND_DEVICE_HANDSET=-1;
 static uint32_t SND_DEVICE_SPEAKER=-1;
+static uint32_t SND_DEVICE_SPEAKER_IN_CALL=-1;
 static uint32_t SND_DEVICE_BT=-1;
 static uint32_t SND_DEVICE_BT_EC_OFF=-1;
 static uint32_t SND_DEVICE_HEADSET=-1;
@@ -175,6 +176,7 @@ AudioHardware::AudioHardware() :
                 CHECK_FOR(CURRENT);
                 CHECK_FOR(HANDSET);
                 CHECK_FOR(SPEAKER);
+                CHECK_FOR(SPEAKER_IN_CALL);
                 CHECK_FOR(BT);
                 CHECK_FOR(BT_EC_OFF);
                 CHECK_FOR(HEADSET);
@@ -273,10 +275,10 @@ status_t AudioHardware::initCheck()
 AudioStreamOut* AudioHardware::openOutputStream(
         uint32_t devices, int *format, uint32_t *channels, uint32_t *sampleRate, status_t *status)
 {
-        audio_output_flags_t flags = static_cast<audio_output_flags_t> (*status);
-
     { // scope for the lock
         Mutex::Autolock lock(mLock);
+
+    audio_output_flags_t flag = static_cast<audio_output_flags_t> (*status);
 
 #ifdef QCOM_VOIP_ENABLED
         // only one output stream allowed
@@ -1207,6 +1209,11 @@ static int msm72xx_enable_postproc(bool state)
         device_id = 2;
         ALOGI("set device to SND_DEVICE_HEADSET device_id=2");
     }
+    if(snd_device == SND_DEVICE_SPEAKER_IN_CALL)
+    {
+        device_id = 7;
+        ALOGI("set device to SND_DEVICE_SPEAKER_IN_CALL device_id=7");
+    }
 
     fd = open(PCM_CTL_DEVICE, O_RDWR);
     if (fd < 0) {
@@ -1453,6 +1460,7 @@ status_t AudioHardware::setMasterVolume(float v)
     ALOGI("Set master volume to %d.\n", vol);
     set_volume_rpc(SND_DEVICE_HANDSET, SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_SPEAKER, SND_METHOD_VOICE, vol, m7xsnddriverfd);
+    set_volume_rpc(SND_DEVICE_SPEAKER_IN_CALL, SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_BT,      SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_HEADSET, SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_IN_S_SADC_OUT_HANDSET, SND_METHOD_VOICE, vol, m7xsnddriverfd);
@@ -1589,7 +1597,6 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
     bool enableDgtlFmDriver = false;
 #endif
 
-
     //int (*msm72xx_enable_audpp)(int);
     //msm72xx_enable_audpp = (int (*)(int))::dlsym(acoustic, "msm72xx_enable_audpp");
 
@@ -1619,7 +1626,7 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
 #endif
             } else {
                 if (outputDevices & AudioSystem::DEVICE_OUT_SPEAKER) {
-                    ALOGI("Routing audio to Speakerphone\n");
+                    ALOGI("doRouting[1]----Routing audio to Speakerphone\n");
                     new_snd_device = SND_DEVICE_SPEAKER;
                     new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
                 } else {
@@ -1703,8 +1710,13 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
             new_snd_device = SND_DEVICE_HEADSET;
             new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
         } else if (outputDevices & AudioSystem::DEVICE_OUT_SPEAKER) {
-            ALOGI("Routing audio to Speakerphone\n");
-            new_snd_device = SND_DEVICE_SPEAKER;
+            ALOGI("doRouting[2]----Routing audio to Speakerphone\n");
+            if (mMode == AudioSystem::MODE_IN_CALL && SND_DEVICE_SPEAKER_IN_CALL >= 0) {
+                ALOGI("Call-mode speaker exists, using it\n");
+                new_snd_device = SND_DEVICE_SPEAKER_IN_CALL;
+            } else {
+                new_snd_device = SND_DEVICE_SPEAKER;
+            }
             new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
         } else if (outputDevices & AudioSystem::DEVICE_OUT_EARPIECE) {
             ALOGI("Routing audio to Handset\n");
@@ -2435,7 +2447,7 @@ status_t AudioHardware::AudioStreamOutDirect::set(
     uint32_t lChannels = pChannels ? *pChannels : 0;
     uint32_t lRate = pRate ? *pRate : 0;
 
-    ALOGE("set1 lFormat = %d lChannels= %u lRate = %u\n", lFormat, lChannels, lRate );
+    ALOGE("AudioStreamOutDirect::set  lFormat = %d lChannels= %u lRate = %u\n", lFormat, lChannels, lRate );
     mHardware = hw;
 
     // fix up defaults

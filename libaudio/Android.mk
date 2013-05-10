@@ -69,7 +69,8 @@ LOCAL_SRC_FILES := \
 LOCAL_SHARED_LIBRARIES := \
     libcutils \
     libutils \
-    libmedia
+    libmedia \
+    libaudioparameter
 
 LOCAL_STATIC_LIBRARIES := \
     libaudiohw_legacy \
