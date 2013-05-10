@@ -4,6 +4,8 @@
 ro.vendor.extension_library=/system/lib/libqc-opt.so
 rild.libpath=/system/lib/libril-qc-1.so
 rild.libargs=-d /dev/smd0
+ro.telephony.ril_class=QualcommSharedRIL
+ro.telephony.ril.v3=skippinpukcount
 ro.cdma.home.operator.numeric=46003
 ro.telephony.default_network=4
 ro.config.cdma_subscription=0
