@@ -62,6 +62,9 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 BOARD_HAVE_BLUETOOTH := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/c8813/bluetooth
 
+# RIL
+BOARD_RIL_CLASS := ../../../device/huawei/c8813/ril/
+
 # OpenGL drivers config file path
 BOARD_EGL_CFG := device/huawei/c8813/prebuilt/system/lib/egl/egl.cfg
 
@@ -104,8 +107,8 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 183500800
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Kernel 
-#TARGET_KERNEL_SOURCE := kernel/huawei/msm8x25
-#TARGET_KERNEL_CONFIG := cm_msm8x25_defconfig
+TARGET_KERNEL_SOURCE := kernel/huawei/msm8x25
+TARGET_KERNEL_CONFIG := cm_msm8x25_defconfig
 TARGET_PREBUILT_KERNEL := device/huawei/c8813/kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=huawei loglevel=1
 BOARD_KERNEL_BASE := 0x00200000
