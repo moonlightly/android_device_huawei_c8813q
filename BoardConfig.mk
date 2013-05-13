@@ -128,6 +128,8 @@ DEVICE_RESOLUTION := 480x854
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_10x18.h\"
 
 TW_INTERNAL_STORAGE_PATH := "/sdcard"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
@@ -135,7 +137,10 @@ TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_NO_REBOOT_BOOTLOADER := true
-TW_BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/c8813/recovery/graphics_cn.c
+# CN
+#TW_BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/c8813/recovery/graphics_cn.c
+# EN
+TW_BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/c8813/recovery/graphics.c
 TARGET_RECOVERY_INITRC := device/huawei/c8813/recovery/recovery.rc
 
 # Brightness information
