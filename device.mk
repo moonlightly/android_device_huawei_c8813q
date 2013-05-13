@@ -126,10 +126,6 @@ PRODUCT_COPY_FILES += \
     device/huawei/c8813q/prebuilt/system/etc/qosmgr_rules.xml:system/etc/qosmgr_rules.xml
 
 PRODUCT_COPY_FILES += \
-    device/huawei/c8813q/prebuilt/system/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    device/huawei/c8813q/prebuilt/system/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
-
-PRODUCT_COPY_FILES += \
     device/huawei/c8813q/prebuilt/system/usr/idc/synaptics.idc:system/usr/idc/synaptics.idc \
     device/huawei/c8813q/prebuilt/system/usr/keychars/7x27a_kp.kcm:system/usr/keychars/7x27a_kp.kcm \
     device/huawei/c8813q/prebuilt/system/usr/keylayout/7x27a_kp.kl:system/usr/keylayout/7x27a_kp.kl \
