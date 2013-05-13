@@ -1,9 +1,9 @@
 USE_CAMERA_STUB := false
 
 # inherit from the proprietary version
--include vendor/huawei/c8813/BoardConfigVendor.mk
+-include vendor/huawei/c8813q/BoardConfigVendor.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/huawei/c8813/include
+TARGET_SPECIFIC_HEADER_PATH := device/huawei/c8813q/include
 
 # Platform
 TARGET_NO_BOOTLOADER := true
@@ -29,8 +29,8 @@ ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
-TARGET_BOOTLOADER_BOARD_NAME := c8813
-TARGET_OTA_ASSERT_DEVICE := c8813,hwc8813,C8813
+TARGET_BOOTLOADER_BOARD_NAME := c8813q
+TARGET_OTA_ASSERT_DEVICE := c8813q,hwc8813q,C8813Q
 
 BOARD_WANTS_EMMC_BOOT := true
 
@@ -55,18 +55,18 @@ BOARD_USES_QCOM_LIBS := true
 # GPS
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_GPS := true
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := c8813
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := c8813q
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/c8813/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/c8813q/bluetooth
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/huawei/c8813/ril/
+BOARD_RIL_CLASS := ../../../device/huawei/c8813q/ril/
 
 # OpenGL drivers config file path
-BOARD_EGL_CFG := device/huawei/c8813/prebuilt/system/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/huawei/c8813q/prebuilt/system/lib/egl/egl.cfg
 
 USE_OPENGL_RENDERER := true
 TARGET_USES_OVERLAY := true
@@ -109,7 +109,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # Kernel 
 TARGET_KERNEL_SOURCE := kernel/huawei/msm8x25
 TARGET_KERNEL_CONFIG := cm_msm8x25_defconfig
-TARGET_PREBUILT_KERNEL := device/huawei/c8813/kernel
+TARGET_PREBUILT_KERNEL := device/huawei/c8813q/kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=huawei loglevel=1
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_PAGE_SIZE := 2048
@@ -123,7 +123,7 @@ BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 
 # Recovery
-TARGET_PREBUILT_RECOVERY_KERNEL := device/huawei/c8813/recovery_kernel
+TARGET_PREBUILT_RECOVERY_KERNEL := device/huawei/c8813q/recovery_kernel
 DEVICE_RESOLUTION := 480x854
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -138,10 +138,10 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_NO_REBOOT_BOOTLOADER := true
 # CN
-#TW_BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/c8813/recovery/graphics_cn.c
+#TW_BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/c8813q/recovery/graphics_cn.c
 # EN
-TW_BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/c8813/recovery/graphics.c
-TARGET_RECOVERY_INITRC := device/huawei/c8813/recovery/recovery.rc
+TW_BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/c8813q/recovery/graphics.c
+TARGET_RECOVERY_INITRC := device/huawei/c8813q/recovery/recovery.rc
 
 # Brightness information
 TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.589824/leds/lcd-backlight/brightness

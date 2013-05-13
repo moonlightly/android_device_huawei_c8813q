@@ -1,5 +1,5 @@
 #
-# system.prop for c8813
+# system.prop for c8813q
 #
 ro.vendor.extension_library=/system/lib/libqc-opt.so
 rild.libpath=/system/lib/libril-qc-1.so
@@ -151,6 +151,6 @@ dalvik.vm.heapgrowthlimit=36m
 dalvik.vm.heapsize=128m
 dalvik.vm.heapstartsize=5m
 
-ro.confg.hw_appsbootversion=C8813VSHENDUOS_APPSBOOT
-ro.confg.hw_appversion=C8813VSHENDUOS_KERNEL
-ro.confg.hw_appfsversion=C8813VSHENDUOS_SYSIMG
+ro.confg.hw_appsbootversion=C8813QVSHENDUOS_APPSBOOT
+ro.confg.hw_appversion=C8813QVSHENDUOS_KERNEL
+ro.confg.hw_appfsversion=C8813QVSHENDUOS_SYSIMG
